@@ -3,6 +3,4 @@ export interface Post {
   content: string;
   loveIts: number;
   createdAt:Date;
-
-
 }
