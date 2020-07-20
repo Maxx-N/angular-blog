@@ -1,10 +1,20 @@
-<li class="list-group-item">
-  <div class="h4">{{ postTitle }}</div>
+<li
+  [ngClass]="{
+    'list-group-item': true,
+    'list-group-item-success': postLoveIts > 0,
+    'list-group-item-danger': postLoveIts < 0
+  }"
+>
+  <div class="h4 text-center">{{ postTitle }}</div>
   <div>{{ postContent }}</div>
-  <div class="small">Posté le {{ postCreatedAt | date: 'short' }}</div>
-  <div class="small">{{ postLoveIts }} personnes aiment ça !</div>
-  <button class="btn btn-success" (click)="onClickAddALike()">J'aime</button>
-  <button class="btn btn-danger" (click)="onClickRemoveALike()">
-    Je n'aime pas
-  </button>
+  <div class="small">Posté le {{ postCreatedAt | date: "short" }}</div>
+  <div *ngIf="postLoveIts>0" class="small font-weight-bold">{{ postLoveIts }} personne(s) aime(nt) ça</div>
+  <div *ngIf="postLoveIts<0" class="small font-weight-bold">{{ - postLoveIts }} personne(s) n'aime(nt) pas ça</div>
+  <div *ngIf="postLoveIts===0" class="small font-weight-bold">Personne n'aime ça</div>
+  <div class="d-flex justify-content-around">
+    <button class="btn btn-success" (click)="onClickAddALike()">J'aime</button>
+    <button class="btn btn-danger" (click)="onClickRemoveALike()">
+      Je n'aime pas
+    </button>
+  </div>
 </li>
