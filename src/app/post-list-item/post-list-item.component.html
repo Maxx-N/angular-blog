@@ -1,6 +1,10 @@
 <li class="list-group-item">
-    <div class="h2">{{postTitle}}</div>
-    <div class="p">{{postContent}}</div>
-    <div class="small">Posté le {{postCreatedAt}}</div>
-    <div class="small">{{postLoveIts}} personnes aiment ça !</div>
+  <div class="h4">{{ postTitle }}</div>
+  <div>{{ postContent }}</div>
+  <div class="small">Posté le {{ postCreatedAt | date: 'short' }}</div>
+  <div class="small">{{ postLoveIts }} personnes aiment ça !</div>
+  <button class="btn btn-success" (click)="onClickAddALike()">J'aime</button>
+  <button class="btn btn-danger" (click)="onClickRemoveALike()">
+    Je n'aime pas
+  </button>
 </li>

@@ -14,4 +14,12 @@ export class PostListItemComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  onClickAddALike() {
+    this.postLoveIts += 1;
+  }
+
+  onClickRemoveALike() {
+    this.postLoveIts -= 1;
+  }
 }
