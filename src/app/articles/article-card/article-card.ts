@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, computed, input, signal } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
+
+import { Article } from '../article.model';
 
 @Component({
   imports: [CardModule, ButtonModule],
@@ -8,4 +10,8 @@ import { CardModule } from 'primeng/card';
   styleUrl: './article-card.scss',
   templateUrl: './article-card.html',
 })
-export class ArticleCard {}
+export class ArticleCard {
+  article = input.required<Article>();
+
+  cardSubheader = computed(() => `${this.article().author} • ${this.article().date}`);
+}

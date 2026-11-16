@@ -1,13 +1,11 @@
-<p-card class="w-full overflow-hidden"subheader="Marie Dubois • 2025-10-01">
+<p-card class="w-full overflow-hidden" [subheader]="cardSubheader()">
   <ng-template #header>
-    <img class="block w-full" alt="Angular" src="images-articles/angular.jpg" />
+    <img class="block w-full" [alt]="article().title" [src]="article().imageUrl" />
   </ng-template>
   <ng-template #title>
-    <span class="font-bold">Introduction à Angular</span>
+    <span class="font-bold">{{ article().title }}</span>
   </ng-template>
-  <p >
-    Découvrez les fondamentaux d'Angular et comment créer votre première application.
-  </p>
+  <p>{{ article().excerpt }}</p>
   <ng-template #footer>
     <div class="flex justify-content-end">
       <button type="button" pButton>Lire l'article</button>
