@@ -1,12 +1,14 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { RouterLink } from '@angular/router';
+import { tap } from 'rxjs';
+import { ProgressSpinner } from 'primeng/progressspinner';
 
 import { ArticleCard } from '../article-card/article-card';
 import { ArticleService } from '../article-service';
-import { RouterLink } from '@angular/router';
 
 @Component({
-  imports: [ArticleCard, RouterLink],
+  imports: [ArticleCard, RouterLink, ProgressSpinner],
   selector: 'app-article-list',
   styleUrl: './article-list.scss',
   templateUrl: './article-list.html',
@@ -14,5 +16,10 @@ import { RouterLink } from '@angular/router';
 export class ArticleList {
   private articleService = inject(ArticleService);
 
-  articles = toSignal(this.articleService.getArticles(), { initialValue: [] });
+  isLoading = signal(true);
+
+  articles = toSignal(
+    this.articleService.getArticles().pipe(tap(() => this.isLoading.set(false))),
+    { initialValue: [] },
+  );
 }
