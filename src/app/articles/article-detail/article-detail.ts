@@ -1,7 +1,7 @@
 import { Component, inject, input, signal } from '@angular/core';
 import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
-import { switchMap, tap } from 'rxjs';
+import { catchError, of, switchMap, tap } from 'rxjs';
 import { ButtonDirective } from 'primeng/button';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
@@ -24,7 +24,13 @@ export class ArticleDetail {
   article = toSignal(
     toObservable(this.articleId).pipe(
       switchMap((id) =>
-        this.articleService.getArticle(id).pipe(tap(() => this.isLoading.set(false))),
+        this.articleService.getArticle(id).pipe(
+          tap(() => this.isLoading.set(false)),
+          catchError(() => {
+            this.isLoading.set(false);
+            return of(undefined);
+          }),
+        ),
       ),
     ),
   );
