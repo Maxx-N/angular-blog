@@ -8,7 +8,7 @@ import { Article } from './article.model';
 @Service()
 export class ArticleService {
   private http = inject(HttpClient);
-  private baseUrl = `${environment.apiUrl}/articles`;
+  private baseUrl = `${environment.apiUrl}/articless`;
 
   getArticles(): Observable<Article[]> {
     return this.http.get<Article[]>(this.baseUrl);

@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
-import { tap } from 'rxjs';
+import { catchError, of, tap } from 'rxjs';
 import { ProgressSpinner } from 'primeng/progressspinner';
 
 import { ArticleCard } from '../article-card/article-card';
@@ -19,7 +19,13 @@ export class ArticleList {
   isLoading = signal(true);
 
   articles = toSignal(
-    this.articleService.getArticles().pipe(tap(() => this.isLoading.set(false))),
+    this.articleService.getArticles().pipe(
+      tap(() => this.isLoading.set(false)),
+      catchError(() => {
+        this.isLoading.set(false);
+        return of([]);
+      }),
+    ),
     { initialValue: [] },
   );
 }
