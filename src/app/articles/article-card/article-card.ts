@@ -12,6 +12,5 @@ import { Article } from '../article.model';
 })
 export class ArticleCard {
   article = input.required<Article>();
-
-  cardSubheader = computed(() => `${this.article().author} • ${this.article().date}`);
+  isDetailed = input(false);
 }

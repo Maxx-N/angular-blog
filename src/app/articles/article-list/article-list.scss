@@ -1,0 +1,5 @@
+:host ::ng-deep {
+  p-card:hover {
+    outline: 0.2rem solid var(--p-primary-color);
+  }
+}

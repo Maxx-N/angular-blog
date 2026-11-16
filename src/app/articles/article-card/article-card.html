@@ -1,14 +1,21 @@
-<p-card class="w-full overflow-hidden" [subheader]="cardSubheader()">
+<p-card class="w-full" [class.overflow-hidden]="!isDetailed()" [subheader]="">
   <ng-template #header>
     <img class="block w-full" [alt]="article().title" [src]="article().imageUrl" />
   </ng-template>
   <ng-template #title>
     <span class="font-bold">{{ article().title }}</span>
   </ng-template>
-  <p>{{ article().excerpt }}</p>
-  <ng-template #footer>
-    <div class="flex justify-content-end">
-      <button type="button" pButton>Lire l'article</button>
+  <ng-template #subtitle>
+    <div class="subtitle pb-2" [class.border-bottom-1]="isDetailed()">
+      {{ article().author }} • {{ article().date }}
     </div>
   </ng-template>
+  <p>{{ isDetailed() ? article().content : article().excerpt }}</p>
+  @if (!isDetailed()) {
+    <ng-template #footer>
+      <div class="flex justify-content-end">
+        <button type="button" pButton>Lire l'article</button>
+      </div>
+    </ng-template>
+  }
 </p-card>

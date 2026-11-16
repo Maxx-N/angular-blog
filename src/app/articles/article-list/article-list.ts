@@ -3,9 +3,10 @@ import { toSignal } from '@angular/core/rxjs-interop';
 
 import { ArticleCard } from '../article-card/article-card';
 import { ArticleService } from '../article-service';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  imports: [ArticleCard],
+  imports: [ArticleCard, RouterLink],
   selector: 'app-article-list',
   styleUrl: './article-list.scss',
   templateUrl: './article-list.html',

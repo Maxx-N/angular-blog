@@ -5,7 +5,9 @@
 <ul class="grid list-none p-0">
   @for (article of articles(); track article.id) {
     <li class="col-12 md:col-6 lg:col-4">
-      <app-article-card [article]="article" />
+      <a [routerLink]="[article.id]" class="no-underline">
+        <app-article-card [article]="article" />
+      </a>
     </li>
   } @empty {
     <li class="w-full text-color-secondary text-xl mt-8">
