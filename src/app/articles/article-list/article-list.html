@@ -7,5 +7,9 @@
     <li class="col-12 md:col-6 lg:col-4">
       <app-article-card [article]="article" />
     </li>
+  } @empty {
+    <li class="w-full text-color-secondary text-xl mt-8">
+      <p class="text-center">Aucun article actuellement</p>
+    </li>
   }
 </ul>
