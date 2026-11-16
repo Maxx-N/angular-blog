@@ -1,7 +1,8 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 import { ArticleCard } from '../article-card/article-card';
-import { Article } from '../article.model';
+import { ArticleService } from '../article-service';
 
 @Component({
   imports: [ArticleCard],
@@ -10,5 +11,7 @@ import { Article } from '../article.model';
   templateUrl: './article-list.html',
 })
 export class ArticleList {
-  articles = signal<Article[]>([]);
+  private articleService = inject(ArticleService);
+
+  articles = toSignal(this.articleService.getArticles(), { initialValue: [] });
 }
