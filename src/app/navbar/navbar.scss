@@ -1,7 +1,16 @@
 .navbar-logo {
+  text-decoration: none;
   color: var(--p-primary-color);
   font-size: 1.5rem;
   font-weight: 600;
+}
+
+.nav-link.p-button {
+  color: var(--p-text-color);
+
+  &.active {
+    color: var(--p-primary-color);
+  }
 }
 
 .navbar-shadow {

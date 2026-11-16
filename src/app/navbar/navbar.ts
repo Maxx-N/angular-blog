@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 import { ButtonModule } from 'primeng/button';
-import { RouterLinkActive } from '@angular/router';
+import { RouterLinkActive, RouterLink } from '@angular/router';
 
 @Component({
-  imports: [ButtonModule, RouterLinkActive],
+  imports: [ButtonModule, RouterLinkActive, RouterLink],
   selector: 'app-navbar',
   styleUrl: './navbar.scss',
   templateUrl: './navbar.html',
