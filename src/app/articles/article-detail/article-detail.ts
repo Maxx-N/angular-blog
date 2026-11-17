@@ -29,7 +29,7 @@ export class ArticleDetail {
   private articleService = inject(ArticleService);
   private commentService = inject(CommentService);
 
-  articleId = input.required<string>();
+  articleId = input.required<number>();
 
   isLoadingArticle = signal(true);
   isLoadingComments = signal(true);
