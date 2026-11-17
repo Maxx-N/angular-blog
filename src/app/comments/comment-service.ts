@@ -32,4 +32,17 @@ export class CommentService {
       }),
     );
   }
+
+  postComment(commentToPost: Omit<Comment, 'id'>): Observable<Comment> {
+    return this.http.post<Comment>(this.baseUrl, commentToPost).pipe(
+      catchError((error) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Une erreur est survenue',
+          detail: "Le commentaire n'a pas pu être ajouté.",
+        });
+        throw error;
+      }),
+    );
+  }
 }

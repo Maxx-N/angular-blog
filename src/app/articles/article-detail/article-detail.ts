@@ -1,4 +1,4 @@
-import { Component, inject, input, signal } from '@angular/core';
+import { Component, inject, input, linkedSignal, signal } from '@angular/core';
 import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
 import { catchError, of, switchMap, tap } from 'rxjs';
@@ -49,18 +49,29 @@ export class ArticleDetail {
     ),
   );
 
-  comments = toSignal(
-    toObservable(this.articleId).pipe(
-      switchMap((id) =>
-        this.commentService.getArticleComments(id).pipe(
-          tap(() => this.isLoadingComments.set(false)),
-          catchError(() => {
-            this.isLoadingComments.set(false);
-            return of<Comment[]>([]);
-          }),
+  comments = linkedSignal(
+    toSignal(
+      toObservable(this.articleId).pipe(
+        switchMap((id) =>
+          this.commentService.getArticleComments(id).pipe(
+            tap(() => this.isLoadingComments.set(false)),
+            catchError(() => {
+              this.isLoadingComments.set(false);
+              return of<Comment[]>([]);
+            }),
+          ),
         ),
       ),
+      { initialValue: [] },
     ),
-    { initialValue: [] },
   );
+
+  postComment(commentData: Omit<Comment, 'id' | 'articleId' | 'date'>) {
+    const today = new Date();
+    const date = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
+    const commentToPost = { ...commentData, date, articleId: this.articleId() };
+    this.commentService.postComment(commentToPost).subscribe((comment) => {
+      this.comments.update((comments) => [comment, ...comments]);
+    });
+  }
 }

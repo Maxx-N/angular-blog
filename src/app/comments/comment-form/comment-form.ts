@@ -1,5 +1,5 @@
 import { Component, input, output } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { TextareaModule } from 'primeng/textarea';
@@ -7,7 +7,7 @@ import { TextareaModule } from 'primeng/textarea';
 import { Comment } from '../comment.model';
 
 @Component({
-  imports: [ButtonModule, InputTextModule, TextareaModule],
+  imports: [ReactiveFormsModule, ButtonModule, InputTextModule, TextareaModule],
   selector: 'app-comment-form',
   styleUrl: './comment-form.scss',
   templateUrl: './comment-form.html',
