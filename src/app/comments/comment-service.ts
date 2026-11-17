@@ -17,11 +17,13 @@ export class CommentService {
     return this.http.get<Comment[]>(this.baseUrl, { params: { articleId } }).pipe(
       delay(500),
       map((comments) =>
-        comments.sort((comment1, comment2) => {
-          const date1 = new Date(comment1.date);
-          const date2 = new Date(comment2.date);
-          return date1 > date2 ? -1 : +1;
-        }),
+        comments
+          .sort((comment1, comment2) => (comment1.id > comment2.id ? -1 : +1))
+          .sort((comment1, comment2) => {
+            const date1 = new Date(comment1.date);
+            const date2 = new Date(comment2.date);
+            return date1 > date2 ? -1 : +1;
+          }),
       ),
       catchError((error) => {
         this.messageService.add({
