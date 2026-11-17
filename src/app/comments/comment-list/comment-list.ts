@@ -1,10 +1,8 @@
-import { Component, computed, inject, input, signal } from '@angular/core';
-import { toObservable, toSignal } from '@angular/core/rxjs-interop';
-import { catchError, of, switchMap, tap } from 'rxjs';
+import { Component, computed, input } from '@angular/core';
 import { ProgressSpinner } from 'primeng/progressspinner';
 
 import { CommentCard } from '../comment-card/comment-card';
-import { CommentService } from '../comment-service';
+import { Comment } from '../comment.model';
 
 @Component({
   imports: [CommentCard, ProgressSpinner],
@@ -13,25 +11,8 @@ import { CommentService } from '../comment-service';
   templateUrl: './comment-list.html',
 })
 export class CommentList {
-  private commentService = inject(CommentService);
-
-  articleId = input.required<number>();
-
-  isLoading = signal(true);
-
-  comments = toSignal(
-    toObservable(this.articleId).pipe(
-      switchMap((id) =>
-        this.commentService.getArticleComments(id).pipe(
-          tap(() => this.isLoading.set(false)),
-          catchError(() => {
-            this.isLoading.set(false);
-            return of([]);
-          }),
-        ),
-      ),
-    ),
-  );
+  comments = input.required<Comment[]>();
+  isLoading = input.required();
 
   commentsCount = computed(() => this.comments()?.length ?? 0);
 }
