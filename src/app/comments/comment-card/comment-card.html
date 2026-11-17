@@ -1,7 +1,7 @@
 <p-card>
   <div class="flex justify-content-between align-items-center mb-3">
-    <span class="font-bold text-primary">Jean Dupont</span>
-    <span class="text-xs text-color-secondary">2025-10-02</span>
+    <span class="font-bold text-primary">{{ comment().author }}</span>
+    <span class="text-xs text-color-secondary">{{ comment().date }}</span>
   </div>
-  <p class="m-0 text-sm">Excellent article ! Très clair pour les débutants.</p>
+  <p class="m-0 text-sm">{{ comment().content }}</p>
 </p-card>
