@@ -1,12 +1,12 @@
 <div class="mx-8 px-8">
   <button pButton [outlined]="true" class="mb-4" routerLink="..">Retour</button>
-  @if (!isLoadingArticle()) {
+  @if (!isLoading()) {
     @if (article(); as article) {
       <app-article-card [article]="article" [isDetailed]="true" />
     } @else {
       <p class="text-center text-color-secondary text-xl mt-8">Aucun article trouvé</p>
     }
-    <app-comment-list />
+    <app-comment-list [articleId]="articleId()" />
     <app-comment-form />
   } @else {
     <div class="text-center mt-8">
