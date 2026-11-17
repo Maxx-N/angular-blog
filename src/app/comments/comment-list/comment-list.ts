@@ -1,4 +1,4 @@
-import { Component, inject, input, signal } from '@angular/core';
+import { Component, computed, inject, input, signal } from '@angular/core';
 import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 import { catchError, of, switchMap, tap } from 'rxjs';
 
@@ -31,4 +31,6 @@ export class CommentList {
       ),
     ),
   );
+
+  commentsCount = computed(() => this.comments()?.length ?? 0);
 }

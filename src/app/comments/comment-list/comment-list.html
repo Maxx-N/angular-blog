@@ -1,5 +1,5 @@
 <section class="mt-5">
-  <h2 class="text-3xl font-bold mt-0 mb-3">Commentaires (2)</h2>
+  <h2 class="text-3xl font-bold mt-0 mb-3">Commentaires ({{ commentsCount() }})</h2>
   <ul class="flex flex-column gap-3 list-none p-0">
     @for (comment of comments(); track comment.id) {
       <li>
