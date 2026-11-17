@@ -1,5 +1,10 @@
-:host ::ng-deep {
-  p-card:hover {
-    outline: 0.2rem solid var(--p-primary-color);
+.card-link {
+  transition: transform 500ms ease;
+
+  &:hover,
+  &:focus-visible {
+    position: relative;
+    z-index: 1;
+    transform: translateY(-6px) scale(1.02);
   }
 }
