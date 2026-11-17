@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Service } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { catchError, map, Observable } from 'rxjs';
+import { MessageService } from 'primeng/api';
 
 import { environment } from '../../environments/environment';
 import { Comment } from './comment.model';
@@ -8,6 +9,8 @@ import { Comment } from './comment.model';
 @Service()
 export class CommentService {
   private http = inject(HttpClient);
+  private messageService = inject(MessageService);
+
   private baseUrl = `${environment.apiUrl}/comments`;
 
   getArticleComments(articleId: number): Observable<Comment[]> {
@@ -19,6 +22,15 @@ export class CommentService {
           return date1 > date2 ? -1 : +1;
         }),
       ),
+      catchError((error) => {
+        console.log(error);
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Une erreur est survenue',
+          detail: "Les commentaires n'ont pas pu être chargés.",
+        });
+        throw error;
+      }),
     );
   }
 }
