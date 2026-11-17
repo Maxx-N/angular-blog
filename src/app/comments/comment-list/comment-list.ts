@@ -1,12 +1,13 @@
 import { Component, computed, inject, input, signal } from '@angular/core';
 import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 import { catchError, of, switchMap, tap } from 'rxjs';
+import { ProgressSpinner } from 'primeng/progressspinner';
 
 import { CommentCard } from '../comment-card/comment-card';
 import { CommentService } from '../comment-service';
 
 @Component({
-  imports: [CommentCard],
+  imports: [CommentCard, ProgressSpinner],
   selector: 'app-comment-list',
   styleUrl: './comment-list.scss',
   templateUrl: './comment-list.html',

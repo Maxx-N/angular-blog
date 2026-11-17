@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Service } from '@angular/core';
-import { catchError, map, Observable } from 'rxjs';
+import { catchError, delay, map, Observable } from 'rxjs';
 import { MessageService } from 'primeng/api';
 
 import { environment } from '../../environments/environment';
