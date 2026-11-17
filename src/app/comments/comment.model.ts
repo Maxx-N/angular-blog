@@ -6,4 +6,4 @@ export interface Comment {
   date: string;
 }
 
-export type PostingCommentStatus = 'idle' | 'loading' | 'success' | 'error';
+export type PostingCommentStatus = 'idle' | 'loading' | 'success';

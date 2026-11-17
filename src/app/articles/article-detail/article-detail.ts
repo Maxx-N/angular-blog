@@ -77,7 +77,7 @@ export class ArticleDetail {
         this.comments.update((comments) => [comment, ...comments]);
       },
       error: () => {
-        this.postingCommentStatus.set('error');
+        this.postingCommentStatus.set('idle');
       },
     });
   }
