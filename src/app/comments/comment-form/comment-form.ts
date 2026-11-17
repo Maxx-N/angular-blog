@@ -19,7 +19,7 @@ export class CommentForm {
   form = new FormGroup({
     author: new FormControl<string>('', { validators: [Validators.required], nonNullable: true }),
     content: new FormControl<string>('', {
-      validators: [Validators.required, Validators.min(10)],
+      validators: [Validators.required, Validators.minLength(10)],
       nonNullable: true,
     }),
   });
