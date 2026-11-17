@@ -1,7 +1,7 @@
 {
   "articles": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Introduction à Angular",
       "author": "Marie Dubois",
       "date": "2025-10-01",
@@ -10,7 +10,7 @@
       "imageUrl": "articles/angular.jpg"
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Les meilleures pratiques en développement web",
       "author": "Pierre Martin",
       "date": "2025-10-05",
@@ -19,7 +19,7 @@
       "imageUrl": "articles/bonnes-pratiques.jpg"
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "PrimeNG : Une bibliothèque de composants complète",
       "author": "Sophie Laurent",
       "date": "2025-10-08",
@@ -28,7 +28,7 @@
       "imageUrl": "articles/primeng.jpg"
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "TypeScript : Le superset de JavaScript",
       "author": "Luc Bernard",
       "date": "2025-10-10",
@@ -37,7 +37,7 @@
       "imageUrl": "articles/typescript.jpg"
     },
     {
-      "id": 5,
+      "id": "5",
       "title": "RxJS et la programmation réactive",
       "author": "Claire Petit",
       "date": "2025-10-12",
@@ -48,32 +48,32 @@
   ],
   "comments": [
     {
-      "id": 1,
-      "articleId": 1,
+      "id": "1",
+      "articleId": "1",
       "author": "Jean Dupont",
       "content": "Excellent article ! Très clair pour les débutants.",
       "date": "2025-10-02"
     },
     {
-      "id": 2,
-      "articleId": 1,
+      "id": "2",
+      "articleId": "1",
       "author": "Alice Robert",
       "content": "Merci pour ces explications détaillées sur Angular.",
       "date": "2025-10-03"
     },
     {
-      "id": 3,
-      "articleId": 2,
+      "id": "3",
+      "articleId": "2",
       "author": "Thomas Leroy",
       "content": "Ces pratiques sont vraiment utiles au quotidien !",
       "date": "2025-10-06"
     },
     {
-      "articleId": 1,
+      "articleId": "1",
       "author": "etrertre",
       "content": "tretterterter",
       "date": "2025-10-12",
-      "id": 4
+      "id": "4"
     }
   ]
 }

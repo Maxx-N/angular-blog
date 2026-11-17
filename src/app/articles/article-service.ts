@@ -26,7 +26,7 @@ export class ArticleService {
     );
   }
 
-  getArticle(articleId: number): Observable<Article> {
+  getArticle(articleId: string): Observable<Article> {
     return this.http.get<Article>(`${this.baseUrl}/${articleId}`).pipe(
       catchError((error) => {
         this.messageService.add({

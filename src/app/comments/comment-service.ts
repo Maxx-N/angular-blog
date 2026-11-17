@@ -13,7 +13,7 @@ export class CommentService {
 
   private baseUrl = `${environment.apiUrl}/comments`;
 
-  getArticleComments(articleId: number): Observable<Comment[]> {
+  getArticleComments(articleId: string): Observable<Comment[]> {
     return this.http.get<Comment[]>(this.baseUrl, { params: { articleId } }).pipe(
       map((comments) =>
         comments.sort((comment1, comment2) => {
