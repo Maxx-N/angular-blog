@@ -15,6 +15,7 @@ export class CommentService {
 
   getArticleComments(articleId: number): Observable<Comment[]> {
     return this.http.get<Comment[]>(this.baseUrl, { params: { articleId } }).pipe(
+      delay(500),
       map((comments) =>
         comments.sort((comment1, comment2) => {
           const date1 = new Date(comment1.date);
@@ -35,7 +36,7 @@ export class CommentService {
 
   postComment(commentToPost: Omit<Comment, 'id'>): Observable<Comment> {
     return this.http.post<Comment>(this.baseUrl, commentToPost).pipe(
-      delay(2000),
+      delay(500),
       catchError((error) => {
         this.messageService.add({
           severity: 'error',

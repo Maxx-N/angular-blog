@@ -76,13 +76,6 @@
       "id": 4
     },
     {
-      "author": "Max",
-      "content": "Testouille",
-      "date": "2026-11-17",
-      "articleId": 1,
-      "id": 5
-    },
-    {
       "author": "Troll",
       "content": "Je suis pas d'accord, il faut coder à l'arrache ça va plus vite.",
       "date": "2026-11-17",
@@ -95,6 +88,20 @@
       "date": "2026-11-17",
       "articleId": 1,
       "id": 7
+    },
+    {
+      "author": "Troll",
+      "content": "C'est quoi un superset ? Moi je code en binaire.",
+      "date": "2026-11-17",
+      "articleId": 4,
+      "id": 8
+    },
+    {
+      "author": "Troll",
+      "content": "Les librairies c'est pour les faibles. Moi je fais du CSS dans les balises <style> et du JS impératif.",
+      "date": "2026-11-17",
+      "articleId": 3,
+      "id": 9
     }
   ]
 }

@@ -15,6 +15,7 @@ export class ArticleService {
 
   getArticles(): Observable<Article[]> {
     return this.http.get<Article[]>(this.baseUrl).pipe(
+      delay(500),
       catchError((error) => {
         this.messageService.add({
           severity: 'error',
@@ -28,7 +29,7 @@ export class ArticleService {
 
   getArticle(articleId: number): Observable<Article> {
     return this.http.get<Article>(`${this.baseUrl}/${articleId}`).pipe(
-      delay(2000),
+      delay(500),
       catchError((error) => {
         this.messageService.add({
           severity: 'error',
