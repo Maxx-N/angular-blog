@@ -7,7 +7,7 @@
       <p class="text-center text-color-secondary text-xl mt-8">Aucun article trouvé</p>
     }
     <app-comment-list [articleId]="articleId()" />
-    <app-comment-form />
+    <app-comment-form [isLoading]="isPostingComment()" />
   } @else {
     <div class="text-center mt-8">
       <p-progress-spinner />

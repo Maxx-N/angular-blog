@@ -29,6 +29,7 @@ export class ArticleDetail {
   articleId = input.required<number>();
 
   isLoading = signal(true);
+  isPostingComment = signal(false);
 
   article = toSignal(
     toObservable(this.articleId).pipe(
