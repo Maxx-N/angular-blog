@@ -3,14 +3,14 @@
   @if (!isLoadingArticle()) {
     @if (article(); as article) {
       <app-article-card [article]="article" [isDetailed]="true" />
+      <app-comment-list [comments]="comments()" [isLoading]="isLoadingComments()" />
+      <app-comment-form
+        [status]="postingCommentStatus()"
+        (publishButtonClicked)="postComment($event)"
+      />
     } @else {
       <p class="text-center text-color-secondary text-xl mt-8">Aucun article trouvé</p>
     }
-    <app-comment-list [comments]="comments()" [isLoading]="isLoadingComments()" />
-    <app-comment-form
-      [status]="postingCommentStatus()"
-      (publishButtonClicked)="postComment($event)"
-    />
   } @else {
     <div class="text-center mt-8">
       <p-progress-spinner />

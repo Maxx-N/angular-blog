@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Service } from '@angular/core';
-import { catchError, Observable } from 'rxjs';
+import { catchError, delay, Observable } from 'rxjs';
 import { MessageService } from 'primeng/api';
 
 import { environment } from '../../environments/environment';
@@ -28,6 +28,7 @@ export class ArticleService {
 
   getArticle(articleId: number): Observable<Article> {
     return this.http.get<Article>(`${this.baseUrl}/${articleId}`).pipe(
+      delay(2000),
       catchError((error) => {
         this.messageService.add({
           severity: 'error',

@@ -74,6 +74,27 @@
       "content": "tretterterter",
       "date": "2025-10-12",
       "id": 4
+    },
+    {
+      "author": "Max",
+      "content": "Testouille",
+      "date": "2026-11-17",
+      "articleId": 1,
+      "id": 5
+    },
+    {
+      "author": "Troll",
+      "content": "Je suis pas d'accord, il faut coder à l'arrache ça va plus vite.",
+      "date": "2026-11-17",
+      "articleId": 2,
+      "id": 6
+    },
+    {
+      "author": "Troll",
+      "content": "React c'est mieux",
+      "date": "2026-11-17",
+      "articleId": 1,
+      "id": 7
     }
   ]
 }
