@@ -9,6 +9,7 @@ import { ArticleCard } from '../article-card/article-card';
 import { ArticleService } from '../article-service';
 import { CommentList } from '../../comments/comment-list/comment-list';
 import { CommentForm } from '../../comments/comment-form/comment-form';
+import { CommentService } from '../../comments/comment-service';
 
 @Component({
   imports: [
@@ -25,6 +26,7 @@ import { CommentForm } from '../../comments/comment-form/comment-form';
 })
 export class ArticleDetail {
   private articleService = inject(ArticleService);
+  private commentService = inject(CommentService);
 
   articleId = input.required<number>();
 
