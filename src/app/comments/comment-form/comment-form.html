@@ -1,7 +1,11 @@
-<form [formGroup]="form" class="surface-50 border-round-xl p-4 mt-4 flex flex-column gap-4">
+<form
+  [formGroup]="form"
+  (ngSubmit)="submit()"
+  class="surface-50 border-round-xl p-4 mt-4 flex flex-column gap-4"
+>
   <h3 class="text-xl font-bold m-0">Ajouter un commentaire</h3>
 
-  <div class="flex flex-column gap-2">
+  <div class="form-field flex flex-column gap-2">
     <label for="author" class="font-semibold">Nom *</label>
     <input
       formControlName="author"
@@ -11,9 +15,10 @@
       placeholder="Votre nom"
       [fluid]="true"
     />
+    <small class="invalid-feedback">Votre nom est requis</small>
   </div>
 
-  <div class="flex flex-column gap-2">
+  <div class="form-field flex flex-column gap-2">
     <label for="content" class="font-semibold">Commentaire *</label>
     <textarea
       formControlName="content"
@@ -23,6 +28,7 @@
       placeholder="Votre commentaire (minimum 10 caractères)"
       [fluid]="true"
     ></textarea>
+    <small class="invalid-feedback">Votre commentaire est requis (minimum 10 caractères)</small>
   </div>
 
   <div>

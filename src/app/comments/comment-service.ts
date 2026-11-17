@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Service } from '@angular/core';
 import { MessageService } from 'primeng/api';
-import { catchError, map, Observable } from 'rxjs';
+import { catchError, delay, map, Observable } from 'rxjs';
 
 import { environment } from '../../environments/environment';
 import { Comment } from './comment.model';
@@ -35,6 +35,7 @@ export class CommentService {
 
   postComment(commentToPost: Omit<Comment, 'id'>): Observable<Comment> {
     return this.http.post<Comment>(this.baseUrl, commentToPost).pipe(
+      delay(2000),
       catchError((error) => {
         this.messageService.add({
           severity: 'error',

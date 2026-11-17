@@ -2,3 +2,29 @@ button .p-progressspinner {
   width: 1rem;
   height: 1rem;
 }
+
+.invalid-feedback {
+  display: none;
+  color: var(--p-red-500);
+}
+
+.form-field {
+  --p-inputtext-focus-border-color: var(--p-secondary-color);
+  --p-textarea-focus-border-color: var(--p-secondary-color);
+
+  > .ng-invalid {
+    &.ng-touched,
+    &.ng-dirty {
+      --p-inputtext-border-color: var(--p-inputtext-invalid-border-color);
+      --p-inputtext-hover-border-color: var(--p-inputtext-invalid-border-color);
+      --p-inputtext-focus-border-color: var(--p-inputtext-invalid-border-color);
+      --p-textarea-border-color: var(--p-inputtext-invalid-border-color);
+      --p-textarea-hover-border-color: var(--p-inputtext-invalid-border-color);
+      --p-textarea-focus-border-color: var(--p-inputtext-invalid-border-color);
+
+      + .invalid-feedback {
+        display: block;
+      }
+    }
+  }
+}
