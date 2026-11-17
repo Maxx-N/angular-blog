@@ -7,9 +7,18 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 import { ArticleCard } from '../article-card/article-card';
 import { ArticleService } from '../article-service';
+import { CommentList } from '../../comments/comment-list/comment-list';
+import { CommentForm } from '../../comments/comment-form/comment-form';
 
 @Component({
-  imports: [ArticleCard, ButtonDirective, RouterLink, ProgressSpinnerModule],
+  imports: [
+    ArticleCard,
+    ButtonDirective,
+    RouterLink,
+    ProgressSpinnerModule,
+    CommentList,
+    CommentForm,
+  ],
   selector: 'app-article-detail',
   styleUrl: './article-detail.scss',
   templateUrl: './article-detail.html',
