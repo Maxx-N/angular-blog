@@ -1,6 +1,6 @@
 <div class="mx-8 px-8">
   <button pButton [outlined]="true" class="mb-4" routerLink="..">Retour</button>
-  @if (!isLoading()) {
+  @if (!isLoadingArticle()) {
     @if (article(); as article) {
       <app-article-card [article]="article" [isDetailed]="true" />
     } @else {

@@ -30,16 +30,31 @@ export class ArticleDetail {
 
   articleId = input.required<number>();
 
-  isLoading = signal(true);
+  isLoadingArticle = signal(true);
+  isLoadingComments = signal(true);
 
   article = toSignal(
     toObservable(this.articleId).pipe(
       switchMap((id) =>
         this.articleService.getArticle(id).pipe(
-          tap(() => this.isLoading.set(false)),
+          tap(() => this.isLoadingArticle.set(false)),
           catchError(() => {
-            this.isLoading.set(false);
+            this.isLoadingArticle.set(false);
             return of(undefined);
+          }),
+        ),
+      ),
+    ),
+  );
+
+  comments = toSignal(
+    toObservable(this.articleId).pipe(
+      switchMap((id) =>
+        this.commentService.getArticleComments(id).pipe(
+          tap(() => this.isLoadingComments.set(false)),
+          catchError(() => {
+            this.isLoadingComments.set(false);
+            return of([]);
           }),
         ),
       ),
