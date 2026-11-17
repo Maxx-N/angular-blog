@@ -8,7 +8,7 @@
     }
     <app-comment-list [comments]="comments()" [isLoading]="isLoadingComments()" />
     <app-comment-form
-      [isLoading]="isPostingComment()"
+      [status]="postingCommentStatus()"
       (publishButtonClicked)="postComment($event)"
     />
   } @else {

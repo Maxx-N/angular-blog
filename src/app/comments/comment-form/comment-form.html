@@ -26,6 +26,11 @@
   </div>
 
   <div>
-    <button pButton type="submit">Publier le commentaire</button>
+    <button pButton type="submit" [disabled]="status() === 'loading'">
+      @if (status() === 'loading') {
+        <p-progressspinner />
+      }
+      Publier le commentaire
+    </button>
   </div>
 </form>

@@ -10,7 +10,7 @@ import { CommentList } from '../../comments/comment-list/comment-list';
 import { ArticleCard } from '../article-card/article-card';
 import { ArticleService } from '../article-service';
 import { CommentService } from '../../comments/comment-service';
-import { Comment } from '../../comments/comment.model';
+import { Comment, PostingCommentStatus } from '../../comments/comment.model';
 
 @Component({
   imports: [
@@ -33,7 +33,7 @@ export class ArticleDetail {
 
   isLoadingArticle = signal(true);
   isLoadingComments = signal(true);
-  isPostingComment = signal(false);
+  postingCommentStatus = signal<PostingCommentStatus>('idle');
 
   article = toSignal(
     toObservable(this.articleId).pipe(
@@ -70,8 +70,15 @@ export class ArticleDetail {
     const today = new Date();
     const date = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
     const commentToPost = { ...commentData, date, articleId: this.articleId() };
-    this.commentService.postComment(commentToPost).subscribe((comment) => {
-      this.comments.update((comments) => [comment, ...comments]);
+    this.postingCommentStatus.set('loading');
+    this.commentService.postComment(commentToPost).subscribe({
+      next: (comment) => {
+        this.postingCommentStatus.set('success');
+        this.comments.update((comments) => [comment, ...comments]);
+      },
+      error: () => {
+        this.postingCommentStatus.set('error');
+      },
     });
   }
 }

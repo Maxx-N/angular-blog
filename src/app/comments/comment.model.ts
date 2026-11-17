@@ -5,3 +5,5 @@ export interface Comment {
   content: string;
   date: string;
 }
+
+export type PostingCommentStatus = 'idle' | 'loading' | 'success' | 'error';

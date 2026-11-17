@@ -1,19 +1,20 @@
-import { Component, input, output } from '@angular/core';
+import { Component, effect, input, output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { TextareaModule } from 'primeng/textarea';
 
-import { Comment } from '../comment.model';
+import { Comment, PostingCommentStatus } from '../comment.model';
+import { ProgressSpinner } from 'primeng/progressspinner';
 
 @Component({
-  imports: [ReactiveFormsModule, ButtonModule, InputTextModule, TextareaModule],
+  imports: [ReactiveFormsModule, ButtonModule, InputTextModule, TextareaModule, ProgressSpinner],
   selector: 'app-comment-form',
   styleUrl: './comment-form.scss',
   templateUrl: './comment-form.html',
 })
 export class CommentForm {
-  isLoading = input.required<boolean>();
+  status = input.required<PostingCommentStatus>();
   publishButtonClicked = output<Omit<Comment, 'id' | 'articleId' | 'date'>>();
 
   form = new FormGroup({
@@ -23,6 +24,14 @@ export class CommentForm {
       nonNullable: true,
     }),
   });
+
+  constructor() {
+    effect(() => {
+      if (this.status() === 'success') {
+        this.form.reset();
+      }
+    });
+  }
 
   submit() {
     this.form.markAllAsTouched();
