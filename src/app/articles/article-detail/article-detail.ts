@@ -1,4 +1,4 @@
-import { Component, inject, input, linkedSignal, signal } from '@angular/core';
+import { Component, inject, input, linkedSignal, numberAttribute, signal } from '@angular/core';
 import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
 import { catchError, of, switchMap, tap } from 'rxjs';
@@ -29,7 +29,7 @@ export class ArticleDetail {
   private articleService = inject(ArticleService);
   private commentService = inject(CommentService);
 
-  articleId = input.required<number>();
+  articleId = input.required({ transform: numberAttribute });
 
   isLoadingArticle = signal(true);
   isLoadingComments = signal(true);
